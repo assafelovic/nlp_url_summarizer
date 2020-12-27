@@ -8,19 +8,19 @@ class FrequencySummarizer:
   def __init__(self, min_cut=0.1, max_cut=0.9):
     """
      Initilize the text summarizer.
-     Words that have a frequency term lower than min_cut 
+     Words that have a frequency term lower than min_cut
      or higer than max_cut will be ignored.
     """
     self._min_cut = min_cut
-    self._max_cut = max_cut 
+    self._max_cut = max_cut
     self._stopwords = set(stopwords.words('english') + list(punctuation))
 
   def _compute_frequencies(self, word_sent):
-    """ 
+    """
       Compute the frequency of each of word.
-      Input: 
+      Input:
        word_sent, a list of sentences already tokenized.
-      Output: 
+      Output:
        freq, a dictionary where freq[w] is the frequency of w.
     """
     freq = defaultdict(int)
@@ -28,7 +28,7 @@ class FrequencySummarizer:
       for word in s:
         if word not in self._stopwords:
           freq[word] += 1
-    # frequencies normalization and fitering
+    # frequencies normalization and filtering
     m = float(max(freq.values()))
     for w in list(freq):
       freq[w] = freq[w]/m
@@ -38,7 +38,7 @@ class FrequencySummarizer:
 
   def summarize(self, text, n):
     """
-      Return a list of n sentences 
+      Return a list of n sentences
       which represent the summary of text.
     """
     sents = sent_tokenize(text)
@@ -50,7 +50,7 @@ class FrequencySummarizer:
       for w in sent:
         if w in self._freq:
           ranking[i] += self._freq[w]
-    sents_idx = self._rank(ranking, n)    
+    sents_idx = self._rank(ranking, n)
     return [sents[j] for j in sents_idx]
 
   def _rank(self, ranking, n):
