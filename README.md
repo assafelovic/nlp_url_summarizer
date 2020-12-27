@@ -6,7 +6,8 @@
 ```pip install -r requirements.txt```
 
 ### 2. Open Python command line
-```import nltk
+```
+import nltk
 nltk.download("stopwords")
 ```
 
