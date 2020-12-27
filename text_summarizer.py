@@ -3,7 +3,6 @@ from nltk.corpus import stopwords
 from collections import defaultdict
 from string import punctuation
 from heapq import nlargest
-import nltk
 
 class FrequencySummarizer:
   def __init__(self, min_cut=0.1, max_cut=0.9):
@@ -31,7 +30,7 @@ class FrequencySummarizer:
           freq[word] += 1
     # frequencies normalization and fitering
     m = float(max(freq.values()))
-    for w in freq.keys():
+    for w in list(freq):
       freq[w] = freq[w]/m
       if freq[w] >= self._max_cut or freq[w] <= self._min_cut:
         del freq[w]

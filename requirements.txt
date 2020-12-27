@@ -1,0 +1,6 @@
+beautifulsoup4
+nltk
+numpy
+setuptools
+sumy
+requests

@@ -3,6 +3,7 @@
 from bs4 import BeautifulSoup
 from text_summarizer import FrequencySummarizer
 import requests
+import sys
 
 def getTextFromURL(url):
 	r = requests.get(url)
@@ -17,7 +18,7 @@ def summarizeURL(url, total_pars):
 	final_summary = fs.summarize(url_text.replace("\n"," "), total_pars)
 	return " ".join(final_summary)
 
-url = raw_input("Enter a URL\n")
+url = str(input("Enter an article URL\n")) if len(sys.argv) < 1 else sys.argv[1]
 final_summary = summarizeURL(url, 5)
-print final_summary
+print(final_summary)
 
