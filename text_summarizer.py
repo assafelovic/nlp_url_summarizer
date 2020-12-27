@@ -7,9 +7,9 @@ from heapq import nlargest
 class FrequencySummarizer:
   def __init__(self, min_cut=0.1, max_cut=0.9):
     """
-     Initilize the text summarizer.
+     Initialize the text summarizer.
      Words that have a frequency term lower than min_cut
-     or higer than max_cut will be ignored.
+     or higher than max_cut will be ignored.
     """
     self._min_cut = min_cut
     self._max_cut = max_cut
